@@ -154,7 +154,7 @@ export function BookingSection() {
           Selected slot: {selectedSlot ? formatIstTime(selectedSlot.startAt) : "None"}
         </p>
         <p style={{ color: "var(--accent)", marginTop: "-0.25rem" }}>
-          Consultation fee: Rs. 1
+          Consultation fee: Rs. 416
         </p>
         <div style={{ display: "grid", gap: "0.6rem", maxWidth: 420 }}>
           <input
