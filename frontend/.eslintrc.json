@@ -1,0 +1,11 @@
+{
+  "ignorePatterns": [
+    "tailwind.config.js",
+    "postcss.config.js",
+    "next.config.mjs"
+  ],
+  "extends": ["next/core-web-vitals"],
+  "rules": {
+    "react/no-unescaped-entities": "off"
+  }
+}

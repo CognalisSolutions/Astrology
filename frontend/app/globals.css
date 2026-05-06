@@ -1,0 +1,996 @@
+/* Tailwind + Custom Cosmic Styles for Fabulous Astrology Site */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 xl:px-12;
+  }
+}
+
+@layer base {
+
+  :root {
+    --bg: #0A0F1C;
+    --surface: #101735;
+    --accent: #D4AF37;
+    --accent-dim: #B8962E;
+    --text: #f8f3e7;
+    --muted: #c0bdd4;
+    --whatsapp: #25d366;
+    --danger: #c44c4c;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    @apply text-[var(--text)] font-serif antialiased leading-relaxed max-w-full m-0 p-0;
+    background:
+      radial-gradient(1200px 600px at 15% -10%, rgba(42, 66, 168, 0.52), transparent 70%),
+      radial-gradient(900px 500px at 85% 20%, rgba(26, 51, 139, 0.44), transparent 65%),
+      linear-gradient(165deg, #060a22 0%, #091336 45%, #050a1f 100%);
+    position: relative;
+    overflow-x: hidden;
+  }
+  main {
+    @apply min-h-[60vh];
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-4xl md:text-5xl font-serif font-bold text-accent mb-4 tracking-tight uppercase;
+  }
+  .section-title + p {
+    color: #F5E6C8 !important;
+    font-weight: 500;
+    text-shadow: 0 0 6px rgba(255, 215, 0, 0.2);
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl font-semibold text-base transition-all duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent ring-offset-2 ring-offset-bg;
+  }
+  .btn:disabled {
+    @apply opacity-55 cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply bg-gradient-to-r from-accent to-accent-dim text-slate-900 shadow-lg shadow-accent/25 hover:shadow-2xl hover:shadow-accent/40 hover:scale-[1.05] rounded-[12px] animate-pulse-glow;
+  }
+  .navbar {
+    @apply bg-bg border-b border-accent/30 shadow-[0_4px_20px_rgba(0,0,0,0.5)] backdrop-blur-md;
+  }
+  .btn-ghost {
+    @apply bg-transparent text-text border border-text/25 hover:border-accent hover:text-accent hover:shadow-md shadow-inner;
+  }
+
+  .card {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 0;
+    padding: 1.5rem;
+    border-radius: 2rem;
+    border: 2px solid rgba(209, 165, 58, 0.15);
+    background: linear-gradient(145deg, rgba(16,23,53,0.96), rgba(10,17,40,0.98));
+    backdrop-filter: blur(24px);
+    box-shadow: 
+      0 25px 50px rgba(0,0,0,0.5),
+      0 0 25px rgba(209,165,58,0.25),
+      inset 0 1px 0 rgba(255,255,255,0.12);
+    transition: all 0.5s cubic-bezier(0.22,1,0.36,1);
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(209,165,58,0.1), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .card:hover {
+    transform: translateY(-0.75rem) scale(1.02);
+    box-shadow: 
+      0 50px 100px rgba(0,0,0,0.75),
+      0 0 60px rgba(209,165,58,0.5),
+      0 30px 60px rgba(209,165,58,0.3),
+      inset 0 1px 0 rgba(255,255,255,0.25);
+    border-color: rgba(209,165,58,0.55);
+  }
+  .card:hover::before {
+    opacity: 1;
+  }
+  .card > * {
+    position: relative;
+    z-index: 1;
+  }
+  .card h3 {
+    background: linear-gradient(to right, #f0d4a0, var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    line-height: 1.25;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  }
+  .card p {
+    color: rgba(192,189,212,0.95);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin: 0;
+  }
+  @media (min-width: 768px) {
+    .card {
+      padding: 2rem;
+    }
+    .card h3 {
+      font-size: 1.5rem;
+    }
+    .card p {
+      font-size: 1rem;
+    }
+  }
+
+  .whatsapp-fab {
+    @apply fixed right-5 bottom-5 z-50 w-14 h-14 rounded-full bg-whatsapp text-white grid place-items-center text-2xl shadow-2xl shadow-whatsapp/50 border-2 border-white/30 animate-pulse hover:animate-pulse-glow hover:brightness-110 transition-all;
+  }
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(circle at 12% 18%, rgba(209, 169, 58, 0.2) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 24% 64%, rgba(255, 216, 120, 0.18) 0 1.3px, transparent 2.4px),
+    radial-gradient(circle at 52% 28%, rgba(209, 169, 58, 0.16) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 72% 78%, rgba(255, 216, 120, 0.16) 0 1.4px, transparent 2.4px),
+    radial-gradient(circle at 88% 35%, rgba(209, 169, 58, 0.2) 0 1.5px, transparent 2.5px);
+  animation: gold-sparkle-drift 34s linear infinite;
+  opacity: 0.5;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  backdrop-filter: blur(0.8px);
+}
+
+main,
+footer {
+  position: relative;
+  z-index: 20;
+}
+
+header,
+nav {
+  position: relative;
+  z-index: 60;
+}
+
+a {
+  @apply no-underline text-accent;
+}
+a:hover {
+  @apply underline;
+}
+
+input[type="date"] {
+  color-scheme: dark;
+  -webkit-appearance: auto;
+  appearance: auto;
+}
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Starry particles BG utility */
+.starry-bg {
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, rgba(201, 162, 39, 0.18), transparent),
+    radial-gradient(2px 2px at 40px 70px, rgba(209, 169, 58, 0.14), transparent),
+    radial-gradient(1px 1px at 90px 40px, rgba(201, 162, 39, 0.12), transparent),
+    radial-gradient(1px 1px at 130px 80px, rgba(209, 169, 58, 0.08), transparent),
+    /* Repeat pattern */
+    linear-gradient(45deg, transparent 30%, rgba(201,162,39,0.02) 31%, rgba(201,162,39,0.02) 32%, transparent 33%);
+  background-size: 200px 120px, 200px 120px, 200px 120px, 200px 120px, 200px 120px;
+  animation: shimmer-drift 28s linear infinite;
+}
+
+.hero-cinematic::before {
+  content: "";
+  position: absolute;
+  inset: -35% -10%;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 22% 35%, rgba(58, 97, 255, 0.14), transparent 42%),
+    radial-gradient(ellipse at 72% 48%, rgba(48, 86, 218, 0.12), transparent 44%);
+  filter: blur(20px);
+  animation: blue-light-sweep 24s ease-in-out infinite;
+  z-index: 0;
+}
+
+.hero-cinematic > * {
+  position: relative;
+  z-index: 1;
+}
+
+.cosmic-hero-bg {
+  background:
+    radial-gradient(1200px 700px at 12% -5%, rgba(61, 103, 255, 0.34), transparent 62%),
+    radial-gradient(900px 500px at 84% 22%, rgba(31, 69, 190, 0.3), transparent 66%),
+    linear-gradient(155deg, #050a1f 0%, #081538 48%, #060b24 100%);
+  background-size: 200% 200%;
+  animation: cosmic-gradient-shift 20s ease-in-out infinite;
+}
+
+.cosmic-hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 8% 25%, rgba(209, 169, 58, 0.18) 0 1.3px, transparent 2px),
+    radial-gradient(circle at 28% 72%, rgba(255, 219, 122, 0.18) 0 1.4px, transparent 2px),
+    radial-gradient(circle at 56% 34%, rgba(209, 169, 58, 0.16) 0 1.2px, transparent 1.9px),
+    radial-gradient(circle at 78% 78%, rgba(255, 219, 122, 0.16) 0 1.3px, transparent 2px),
+    radial-gradient(circle at 92% 42%, rgba(209, 169, 58, 0.17) 0 1.3px, transparent 2px);
+  animation: cosmic-star-drift 24s linear infinite;
+  opacity: 0.6;
+}
+
+.cosmic-hero-fallback::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 50%, rgba(18, 31, 88, 0.4), transparent 65%);
+}
+
+.fallback-zodiac-wheel {
+  font-size: clamp(1.2rem, 3vw, 2.1rem);
+  letter-spacing: 0.14em;
+  color: rgba(223, 188, 99, 0.82);
+  text-shadow: 0 0 14px rgba(209, 169, 58, 0.35);
+  animation: fallback-zodiac-spin 36s linear infinite;
+}
+
+.free-readings-section {
+  background: transparent;
+}
+
+.free-readings-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+.divine-services-section > *,
+.booking-section > * {
+  position: relative;
+  z-index: 2;
+}
+
+.hero-page-shell {
+  position: relative;
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: 20;
+}
+
+.hero-banner-section {
+  position: relative;
+  z-index: 40;
+  margin-top: clamp(-4rem, -6vw, -1.5rem);
+}
+
+.site-cosmic-flow {
+  position: relative;
+  z-index: 20;
+  background:
+    radial-gradient(1500px 900px at 18% 0%, rgba(58, 95, 255, 0.2), transparent 68%),
+    radial-gradient(1300px 850px at 86% 8%, rgba(120, 91, 255, 0.14), transparent 68%),
+    linear-gradient(160deg, rgba(4, 9, 34, 0.38), rgba(8, 15, 50, 0.38));
+}
+
+.section-floating-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.section-float-icon {
+  position: absolute;
+  color: rgba(224, 234, 255, 0.78);
+  font-size: clamp(1.2rem, 1.8vw, 1.7rem);
+  text-shadow:
+    0 0 10px rgba(187, 207, 255, 0.76),
+    0 0 24px rgba(119, 147, 255, 0.42);
+  animation: section-icon-float 8.6s ease-in-out infinite;
+}
+
+.free-readings-section::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 22%, rgba(186, 206, 255, 0.22) 0 2px, transparent 3px),
+    radial-gradient(circle at 32% 18%, rgba(158, 186, 255, 0.2) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 65% 30%, rgba(190, 210, 255, 0.18) 0 2px, transparent 3px),
+    radial-gradient(circle at 85% 16%, rgba(157, 185, 255, 0.2) 0 1.5px, transparent 2.5px),
+    radial-gradient(circle at 44% 72%, rgba(179, 201, 255, 0.16) 0 2px, transparent 3px),
+    radial-gradient(circle at 78% 82%, rgba(151, 179, 255, 0.16) 0 1.5px, transparent 2.5px);
+  filter: blur(0.35px);
+  animation: shimmer-drift 28s linear infinite;
+  opacity: 0.45;
+}
+
+.free-readings-section::after {
+  content: "";
+  position: absolute;
+  inset: -30% -10%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 25%, rgba(116, 145, 255, 0.14), transparent 45%),
+    radial-gradient(circle at 78% 70%, rgba(130, 161, 255, 0.12), transparent 44%);
+  opacity: 0.35;
+  animation: free-readings-aura-sway 14s ease-in-out infinite;
+}
+
+.divine-services-section::before {
+  content: "";
+  position: absolute;
+  inset: -12% 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 14% 26%, rgba(177, 200, 255, 0.2) 0 2px, transparent 3px),
+    radial-gradient(circle at 88% 24%, rgba(153, 177, 255, 0.2) 0 1.8px, transparent 3px),
+    radial-gradient(circle at 24% 78%, rgba(172, 196, 255, 0.16) 0 1.6px, transparent 2.7px),
+    radial-gradient(circle at 82% 76%, rgba(153, 177, 255, 0.14) 0 1.7px, transparent 2.8px);
+  opacity: 0.5;
+  animation: section-sparkle-drift 18s linear infinite;
+}
+
+.divine-services-section::after {
+  content: "";
+  position: absolute;
+  inset: 14% -8%;
+  pointer-events: none;
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse at center, rgba(124, 154, 255, 0.14), rgba(124, 154, 255, 0.03) 55%, transparent 72%);
+  filter: blur(6px);
+  opacity: 0.35;
+  animation: section-aura-breathe 9.5s ease-in-out infinite;
+}
+
+.booking-section::before {
+  content: "";
+  position: absolute;
+  inset: -8% -4%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 24%, rgba(167, 191, 255, 0.18), transparent 35%),
+    radial-gradient(circle at 86% 22%, rgba(147, 172, 255, 0.18), transparent 34%),
+    radial-gradient(circle at 12% 82%, rgba(147, 172, 255, 0.12), transparent 33%),
+    radial-gradient(circle at 88% 78%, rgba(167, 191, 255, 0.14), transparent 33%);
+  opacity: 0.45;
+  animation: booking-orb-float 16s ease-in-out infinite;
+}
+
+.booking-section::after {
+  content: none;
+}
+
+@keyframes shimmer-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-8px, 10px, 0) scale(1.02);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+}
+
+@keyframes free-readings-aura-sway {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) scale(1.03);
+  }
+}
+
+@keyframes section-sparkle-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-8px, 8px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes section-aura-breathe {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes booking-orb-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+    opacity: 0.72;
+  }
+}
+
+@keyframes booking-frame-glow {
+  0%,
+  100% {
+    opacity: 0.35;
+    filter: brightness(0.95);
+  }
+  50% {
+    opacity: 0.62;
+    filter: brightness(1.08);
+  }
+}
+
+@keyframes section-icon-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(0deg);
+    opacity: 0.58;
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+@keyframes gold-sparkle-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-8px, 10px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes blue-light-sweep {
+  0% {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+    opacity: 0.34;
+  }
+  50% {
+    transform: translate3d(3%, 2%, 0) scale(1.03);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(-3%, -2%, 0) scale(1);
+    opacity: 0.34;
+  }
+}
+
+@keyframes cosmic-star-drift {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(-12px, 8px, 0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fallback-zodiac-spin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.02);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+@keyframes cosmic-gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.cosmic-premium-bg {
+  position: fixed;
+  isolation: isolate;
+  background:
+    radial-gradient(960px 560px at 50% 50%, rgba(154, 189, 255, 0.18), transparent 62%),
+    radial-gradient(1200px 760px at 20% 12%, rgba(62, 99, 255, 0.44), transparent 66%),
+    radial-gradient(1060px 700px at 84% 8%, rgba(123, 90, 255, 0.34), transparent 65%),
+    radial-gradient(900px 540px at 50% 112%, rgba(36, 70, 192, 0.28), transparent 62%),
+    linear-gradient(158deg, #030722 0%, #0b1b67 46%, #1a1a63 72%, #070c2e 100%);
+  animation: divine-bg-shift 22s ease-in-out infinite;
+}
+
+.cosmic-noise {
+  z-index: 1;
+  opacity: 0.22;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.18) 0 1px, transparent 1.8px),
+    radial-gradient(circle at 70% 60%, rgba(180, 195, 255, 0.13) 0 1.2px, transparent 2px),
+    radial-gradient(circle at 40% 80%, rgba(255, 255, 255, 0.12) 0 1px, transparent 2px);
+  background-size: 180px 180px, 220px 220px, 240px 240px;
+  animation: cosmic-noise-drift 34s linear infinite;
+}
+
+/* Removed the old vignette overlay because it was adding a greyed-out film over the hero animation. */
+
+.cosmic-wheel-ghost {
+  z-index: 2;
+  background:
+    radial-gradient(circle at 50% 58%, rgba(176, 194, 255, 0.18) 0 2px, transparent 3px),
+    repeating-radial-gradient(circle at 50% 58%, rgba(181, 199, 255, 0.1) 0 1px, transparent 1px 32px),
+    repeating-conic-gradient(
+      from 0deg at 50% 58%,
+      rgba(181, 199, 255, 0.13) 0deg 1deg,
+      transparent 1deg 30deg
+    );
+  opacity: 0.18;
+  filter: blur(1.1px);
+  animation: ghost-wheel-spin 80s linear infinite;
+}
+
+.cosmic-particle-field {
+  z-index: 3;
+  background:
+    radial-gradient(circle at 16% 22%, rgba(244, 248, 255, 0.95) 0 1px, transparent 2px),
+    radial-gradient(circle at 34% 73%, rgba(225, 235, 255, 0.75) 0 1.2px, transparent 2.3px),
+    radial-gradient(circle at 58% 35%, rgba(255, 255, 255, 0.82) 0 1.4px, transparent 2.5px),
+    radial-gradient(circle at 77% 67%, rgba(212, 225, 255, 0.62) 0 1.8px, transparent 3px),
+    radial-gradient(circle at 90% 29%, rgba(248, 252, 255, 0.72) 0 1.1px, transparent 2.2px),
+    radial-gradient(circle at 64% 78%, rgba(208, 222, 255, 0.55) 0 2px, transparent 3px);
+  animation: divine-particles-float 24s ease-in-out infinite;
+  opacity: 0.85;
+}
+
+.cosmic-side-icons {
+  z-index: 4;
+  pointer-events: none;
+}
+
+.cosmic-side-icon {
+  position: absolute;
+  color: rgba(214, 225, 255, 0.72);
+  font-size: clamp(1.1rem, 1.6vw, 1.5rem);
+  text-shadow:
+    0 0 10px rgba(186, 205, 255, 0.7),
+    0 0 20px rgba(118, 151, 255, 0.38);
+  opacity: var(--side-icon-opacity, 0.6);
+  transform: rotate(var(--side-icon-rotate, 0deg));
+  animation: side-icon-float 10s ease-in-out infinite;
+}
+
+.zodiac-circle-shell {
+  position: relative;
+  width: min(82vw, 560px);
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  display: grid;
+  place-items: center;
+  filter:
+    drop-shadow(0 0 34px rgba(255, 204, 82, 0.78))
+    drop-shadow(0 0 95px rgba(212, 175, 55, 0.48));
+}
+
+.zodiac-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.zodiac-ring {
+  position: absolute;
+  inset: 0;
+}
+
+.zodiac-ring-outer {
+  animation: zodiac-outer-spin 18s linear infinite;
+}
+
+.zodiac-ring-inner {
+  inset: 16%;
+  animation: zodiac-inner-spin 14s linear infinite;
+}
+
+.zodiac-stroke-main {
+  fill: none;
+  stroke: rgba(255, 214, 98, 0.95);
+  stroke-width: 2.4;
+  filter: drop-shadow(0 0 5px rgba(255, 191, 70, 0.7));
+}
+
+.zodiac-stroke-soft {
+  fill: none;
+  stroke: rgba(255, 185, 62, 0.7);
+  stroke-width: 1.3;
+}
+
+.zodiac-sign-text {
+  fill: #ffd67e;
+  font-size: 25px;
+  letter-spacing: 0.02em;
+  text-shadow:
+    0 0 12px rgba(255, 208, 103, 0.75),
+    0 0 24px rgba(212, 133, 33, 0.45);
+  animation: zodiac-symbol-shimmer 5.2s ease-in-out infinite;
+}
+
+.zodiac-tick {
+  stroke: rgba(255, 209, 95, 0.85);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+}
+
+.zodiac-aura {
+  position: absolute;
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.zodiac-aura-inner {
+  width: 32%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle, rgba(255, 242, 180, 0.95) 0%, rgba(255, 192, 69, 0.86) 42%, rgba(255, 153, 48, 0.36) 68%, transparent 100%);
+  box-shadow: 0 0 50px rgba(255, 198, 76, 0.76);
+  animation: divine-core-breathe 4.4s ease-in-out infinite;
+}
+
+.zodiac-aura-mid {
+  width: 62%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle, rgba(255, 194, 72, 0.26), rgba(255, 122, 42, 0.13) 58%, transparent 80%);
+  filter: blur(3px);
+  animation: divine-aura-sway 8.2s ease-in-out infinite;
+}
+
+.zodiac-aura-outer {
+  width: 86%;
+  aspect-ratio: 1 / 1;
+  background: radial-gradient(circle, rgba(255, 160, 45, 0.14), rgba(255, 214, 98, 0.09) 50%, transparent 78%);
+  filter: blur(7px);
+  animation: divine-aura-sway 10.8s ease-in-out infinite reverse;
+}
+
+.zodiac-wave {
+  position: absolute;
+  inset: 35%;
+  border: 1.8px solid rgba(255, 209, 95, 0.42);
+  border-radius: 999px;
+  pointer-events: none;
+}
+
+.zodiac-wave-one {
+  animation: divine-wave-expand 6.2s ease-out infinite;
+}
+
+.zodiac-wave-two {
+  animation: divine-wave-expand 6.2s ease-out infinite 2.06s;
+}
+
+.zodiac-wave-three {
+  animation: divine-wave-expand 6.2s ease-out infinite 4.12s;
+}
+
+.zodiac-core {
+  position: absolute;
+  width: 26%;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  background: radial-gradient(circle at 50% 48%, rgba(255, 248, 196, 0.98), rgba(255, 209, 89, 0.92) 30%, rgba(255, 162, 56, 0.84) 55%, rgba(212, 175, 55, 0.2) 80%);
+  display: grid;
+  place-items: center;
+  box-shadow:
+    0 0 42px rgba(255, 211, 104, 0.9),
+    0 0 90px rgba(255, 153, 44, 0.42),
+    0 0 150px rgba(255, 205, 86, 0.2);
+  animation: zodiac-core-pulse 4.8s ease-in-out infinite, divine-core-flicker 8s ease-in-out infinite;
+}
+
+.zodiac-core-dot {
+  width: 30%;
+  aspect-ratio: 1 / 1;
+  border-radius: 999px;
+  background: rgba(255, 246, 209, 0.95);
+  box-shadow: 0 0 22px rgba(255, 246, 209, 0.82);
+}
+
+.zodiac-spark {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(234, 241, 255, 0.92) 42%, rgba(171, 195, 255, 0.55) 70%, transparent 100%);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.9),
+    0 0 24px rgba(174, 199, 255, 0.42);
+  animation: zodiac-spark-float 5.4s ease-in-out infinite;
+}
+
+.zodiac-floating-glyph {
+  position: absolute;
+  font-size: clamp(1.15rem, 1.9vw, 1.85rem);
+  color: rgba(226, 233, 255, 0.76);
+  text-shadow:
+    0 0 10px rgba(192, 204, 255, 0.72),
+    0 0 20px rgba(120, 145, 255, 0.35);
+  transform: rotate(var(--glyph-rot, 0deg));
+  pointer-events: none;
+  animation: zodiac-glyph-orbit 11s ease-in-out infinite, zodiac-glyph-spin 16s linear infinite;
+}
+
+@keyframes zodiac-outer-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes zodiac-inner-spin {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes zodiac-core-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.07);
+    opacity: 1;
+  }
+}
+
+@keyframes divine-core-breathe {
+  0%,
+  100% {
+    transform: scale(0.96);
+    opacity: 0.82;
+  }
+  50% {
+    transform: scale(1.1);
+    opacity: 1;
+  }
+}
+
+@keyframes divine-core-flicker {
+  0%,
+  100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.14);
+  }
+}
+
+@keyframes divine-aura-sway {
+  0%,
+  100% {
+    transform: scale(1) translateY(0);
+    opacity: 0.85;
+  }
+  50% {
+    transform: scale(1.04) translateY(-4px);
+    opacity: 1;
+  }
+}
+
+@keyframes divine-wave-expand {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.65;
+  }
+  70% {
+    opacity: 0.2;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+@keyframes zodiac-spark-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+    opacity: 0.35;
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes zodiac-symbol-shimmer {
+  0%,
+  100% {
+    opacity: 0.9;
+    filter: brightness(1);
+  }
+  50% {
+    opacity: 1;
+    filter: brightness(1.2);
+  }
+}
+
+@keyframes zodiac-glyph-orbit {
+  0%,
+  100% {
+    transform: rotate(var(--glyph-rot, 0deg)) translate3d(0, 0, 0);
+    opacity: 0.55;
+  }
+  40% {
+    transform: rotate(calc(var(--glyph-rot, 0deg) + 8deg)) translate3d(6px, -10px, 0);
+    opacity: 1;
+  }
+  70% {
+    transform: rotate(calc(var(--glyph-rot, 0deg) - 6deg)) translate3d(-5px, 8px, 0);
+    opacity: 0.8;
+  }
+}
+
+@keyframes zodiac-glyph-spin {
+  from {
+    filter: brightness(0.95);
+  }
+  to {
+    filter: brightness(1.18);
+  }
+}
+
+@keyframes divine-bg-shift {
+  0% {
+    background-position: 0% 48%;
+  }
+  50% {
+    background-position: 100% 52%;
+  }
+  100% {
+    background-position: 0% 48%;
+  }
+}
+
+@keyframes cosmic-noise-drift {
+  0% {
+    background-position: 0 0, 0 0, 0 0;
+  }
+  100% {
+    background-position: 120px 80px, -90px 110px, 70px -130px;
+  }
+}
+
+@keyframes ghost-wheel-spin {
+  from {
+    transform: rotate(0deg) scale(1);
+  }
+  to {
+    transform: rotate(360deg) scale(1.02);
+  }
+}
+
+@keyframes divine-particles-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -12px, 0) scale(1.03);
+  }
+}
+
+@keyframes side-icon-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(var(--side-icon-rotate, 0deg));
+    opacity: var(--side-icon-opacity, 0.6);
+  }
+  50% {
+    transform: translate3d(6px, calc(var(--side-icon-drift, 14px) * -1), 0) rotate(calc(var(--side-icon-rotate, 0deg) + 8deg));
+    opacity: calc(var(--side-icon-opacity, 0.6) + 0.24);
+  }
+}
+
+@media (max-width: 767px) {
+  .cosmic-particle-field {
+    opacity: 0.5;
+  }
+
+  .cosmic-wheel-ghost {
+    opacity: 0.12;
+  }
+
+  .zodiac-ring-outer {
+    animation-duration: 20s;
+  }
+
+  .zodiac-ring-inner {
+    animation-duration: 16s;
+  }
+
+  .zodiac-spark:nth-of-type(odd) {
+    display: none;
+  }
+
+  .zodiac-sign-text {
+    font-size: 21px;
+  }
+
+  .zodiac-wave-three,
+  .zodiac-aura-outer {
+    display: none;
+  }
+
+  .zodiac-floating-glyph:nth-of-type(odd) {
+    display: none;
+  }
+
+  .cosmic-side-icon {
+    font-size: 1rem;
+  }
+
+  .section-float-icon:nth-of-type(even) {
+    display: none;
+  }
+}
+
