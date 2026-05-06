@@ -110,7 +110,7 @@ export default function BookPage() {
     }
   }
 
-  const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? "6303896121";
+  const wa = process.env.NEXT_PUBLIC_WHATSAPP ?? "9291513999";
 
   return (
     <>
@@ -234,7 +234,8 @@ export default function BookPage() {
             {selected ? formatIstDateTime(selected.startAt) : "Choose a slot above"}
           </p>
           <p style={{ color: "var(--accent)", marginTop: "-0.25rem" }}>
-            Consultation fee: Rs. 1
+            Consultation fee: Rs. 416
+
           </p>
 
           <div style={{ display: "grid", gap: "0.75rem", maxWidth: 420 }}>
